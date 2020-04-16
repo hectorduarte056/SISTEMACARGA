@@ -1,0 +1,111 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteBase /systemuapa2/
+
+RewriteRule ^(.*).html$ $1.php [L]
+
+#
+# URL de nav
+#
+Rewriterule ^system/profile_user/$ module/profile_user/index.php [L]
+
+Rewriterule ^system/update_pass/$ module/profile_user/controller/update_password.php [L]
+Rewriterule ^system/update_profile/$ module/profile_user/controller/update_profile.php [L]
+Rewriterule ^system/profile_user/([0-9]+)$ module/profile_user/index.php?msj=$1 [L]
+
+#
+# Carga
+#
+Rewriterule ^system/carga/$ module/carga/index.php [L]
+Rewriterule ^system/carga/([0-9]+)&(.*)$ module/carga/index.php?escuela=$1&cuatrimestre=$2 [L]
+Rewriterule ^system/mostrar_ciclo/$ module/carga/controller/index.php [L]
+
+#
+# Reporte
+#
+Rewriterule ^system/asignacion/([0-9]+)&(.*)$ module/asignacion_facilitadores/index.php?escuela=$1&cuatrimestre=$2 [L]
+Rewriterule ^system/reporte/$ module/reporte/index.php [L]
+Rewriterule ^system/reporte/([0-9]+)&(.*)$ module/reporte/index.php?escuela=$1&cuatrimestre=$2 [L]
+Rewriterule ^system/reporte/(.*)$ module/reporte/index.php?msj=$1 [L]
+Rewriterule ^system/reporte_ciclo/$ module/reporte/controller/index.php [L]
+
+#
+# Notificacion a Facilitadores
+#
+Rewriterule ^system/notificacion/([0-9]+)&(.*)$ module/notificacion_facilitadores/index.php?escuela=$1&cuatrimestre=$2 [L]
+
+#
+# Facilitadores
+#
+Rewriterule ^system/facilitadores/$ module/facilitadores/index.php [L]
+Rewriterule ^system/add_facilitadores/$ module/add_facilitadores/index.php [L]
+Rewriterule ^system/reg_facilitadores/$ module/add_facilitadores/controller/index.php [L]
+Rewriterule ^system/edit_facilitadores/$ module/profile_facilitadores/controller/index.php [L]
+Rewriterule ^system/profile/([0-9]+)$ module/profile_facilitadores/index.php?facilitador=$1 [L]
+
+#
+# Competencias
+#
+Rewriterule ^system/competencias/([0-9]+)$ module/competencias/index.php?facilitador=$1 [L]
+Rewriterule ^system/competencias/$ module/competencias/index.php
+
+
+
+#/////////////URL de admin////////////////////////
+Rewriterule ^system/admin/$ module/admin/index.php [L]
+
+Rewriterule ^system/admin/asignaturas/$ module/admin/asignaturas/index.php [L]
+Rewriterule ^system/admin/escuelas/$ module/admin/escuelas/index.php [L]
+
+Rewriterule ^system/admin/user/$ module/admin/users/index.php [L]
+Rewriterule ^system/admin/user/([0-9]+)$ module/admin/users/index.php?msj=$1 [L]
+Rewriterule ^system/admin/add_user/$ module/admin/users/success.php [L]
+
+Rewriterule ^system/admin/backup/$ module/admin/backup_bd/index.php [L]
+Rewriterule ^system/admin/backup/bd/$ module/admin/backup_bd/bd/backup.php [L]
+Rewriterule ^system/admin/backup-img/$ module/admin/backup_img/index.php [L]
+Rewriterule ^system/admin/backup/bd/(.*)$ module/admin/backup_bd/bd/$1.sql  [L]
+
+#/////////////URL de admin mantenimiento////////////////////////
+Rewriterule ^system/admin/MantenimientoCarga/$ module/admin/MantenimientoCarga/index.php [L]
+Rewriterule ^system/admin/MantenimientoReporte/$ module/admin/MantenimientoReporte/index.php [L]
+
+#/////////////URL de admin notificaciones////////////////////////
+Rewriterule ^system/admin/notificaciones/$ module/admin/notificaciones/index.php [L]
+
+#/////////////URL END admin////////////////////////
+
+#/////////////URL de login////////////////////////
+Rewriterule ^sign_up/$ login/sign_up.php [L]
+Rewriterule ^sign_up_success/([^/]*)/([^/]*)$ login/sign_up_success.php?id=$1&code=$2 [L]
+#Rewriterule ^sign_up_success/([^-]*)-([^-]*)$ login/sign_up_success.php?id=$1&code=$2 [L]
+Rewriterule ^login/$ login/login.php [L]
+Rewriterule ^login/(.*),(.*)$ login/login.php?error=$1 [L,QSA]
+Rewriterule ^login_action/$ login/login_action.php [L]
+Rewriterule ^passaword_recovery/$ login/pass_recovery.php [L]
+#/////////////END URL de login////////////////////////
+
+
+#/////////////URL mantenimiento////////////////////////
+Rewriterule ^maintenance/$ page_maintenance.php [L]
+#/////////////URL END mantenimiento////////////////////////
+
+Rewriterule ^licencia_off/$ module/no_active/index.php [L]
+
+#/////////////URL ERROR////////////////////////
+Rewriterule ^404$ index.php [L]
+Rewriterule ^403$ error_403.php [L]
+
+#ErrorDocument 403 http://localhost/consultorio/
+#ErrorDocument 404 http://localhost/consultorio/
+#ErrorDocument 500 http://localhost/consultorio/
+#/////////////URL END ERROR////////////////////////
+
+AddType application/x-httpd-php .html
+Options -Indexes
+
+AddCharset UTF-8 .utf8
+AddCharset windows-1252 .html
+AddType 'text/html; charset=UTF-8' html

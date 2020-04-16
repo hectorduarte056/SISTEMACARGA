@@ -1,0 +1,15 @@
+
+
+
+
+
+//////////////////CREAR TRIGGER/////////////////
+
+DELIMITER $$
+CREATE TRIGGER `eliminarfacilitador` 
+AFTER DELETE on `facilitadores`
+FOR EACH ROW
+BEGIN
+DELETE FROM compfacili WHERE old.id_faci = id_faci;
+DELETE FROM facilihorario WHERE old.id_faci = id_faci;
+END $$

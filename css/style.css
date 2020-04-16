@@ -1,0 +1,47 @@
+.logo{
+	width: 100%;
+	height: auto;
+} 
+
+
+.control{
+        margin-top: -25px;
+      }
+
+.form-input, .input-group{
+        margin-bottom: 20px !important;
+      }
+.bg-image
+{
+background-image: url('../images/bg.jpg');
+
+}
+      
+body, html { 
+  
+  /* background-image: url('../images/bg.jpg'); */
+  background-color: transparent;
+  height:100%; 
+} 
+
+footer {
+  position: relative;
+  bottom: 0%;
+  width: 100%;
+  height: auto;
+}
+
+
+
+@media (min-width:1090px){
+
+.dt-buttons{
+  position: absolute !important;
+    text-align: center !important;
+    margin-left: 40% !important;
+    margin-right: 0% !important;
+    top: 0 !important;
+}
+
+
+}
