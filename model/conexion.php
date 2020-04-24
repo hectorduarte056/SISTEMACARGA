@@ -5,7 +5,6 @@
 date_default_timezone_set('America/Dominica');
 class Conexion
 {
-	asdas
 	public static function conectar()
 	{
 		if ($_SERVER["REMOTE_ADDR"] == "127.0.0.1" || $_SERVER["REMOTE_ADDR"] == "::1")
